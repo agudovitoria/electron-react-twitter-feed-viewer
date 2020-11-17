@@ -1,44 +1,49 @@
-import TweetsLoadedSuccessfullyAction from '../actions/TweetsLoadedSuccessfullyAction';
-import TweetsLoadFailedAction from '../actions/TweetsLoadFailedAction';
-import UserLoadedSuccessfullyAction from '../actions/UserLoadedSuccessfullyAction';
-import UserLoadFailedAction from '../actions/UserLoadFailedAction';
+import LoadTweetsAction from '../actions/LoadTweetsAction';
+import LoadTweetsSuccessfullyAction from '../actions/LoadTweetsSuccessfullyAction';
+import LoadTweetsFailedAction from '../actions/LoadTweetsFailedAction';
+import LoadUserAction from '../actions/LoadUserAction';
+import LoadUserSuccessfullyAction from '../actions/LoadUserSuccessfullyAction';
+import LoadUserFailedAction from '../actions/LoadUserFailedAction';
 import { useTwitterDispatch, useTwitterState } from '../providers/TwitterContextProvider';
-import { findUserByName, getTweetsFromUser } from '../services/TwitterService';
-
-const loadTweets = async (dispatch, username) => {
-  const retrieveTweetsFor = (userName) => getTweetsFromUser(userName);
-
-  try {
-    const foundUser = await retrieveTweetsFor(username);
-    dispatch(new TweetsLoadedSuccessfullyAction(foundUser));
-  } catch (error) {
-    dispatch(new TweetsLoadFailedAction(error));
-  }
-};
-
-const loadUserInfo = async (dispatch, username) => {
-  const lookForUsername = (userName) => findUserByName(userName).then(({ data }) => data);
-
-  try {
-    const foundUser = await lookForUsername(username);
-    dispatch(new UserLoadedSuccessfullyAction(foundUser));
-    loadTweets(dispatch, foundUser.username);
-  } catch (error) {
-    dispatch(new UserLoadFailedAction(error));
-  }
-};
+import TwitterService from '../services/TwitterService';
 
 const TwitterApi = () => {
   const { loading, error, user, tweets } = useTwitterState();
   const dispatch = useTwitterDispatch();
+
+  const loadTweets = (username) => {
+    dispatch(new LoadTweetsAction());
+
+    TwitterService.getTweetsFromUser(username)
+      .then((foundTweets) => {
+        dispatch(new LoadTweetsSuccessfullyAction(foundTweets));
+      })
+      .catch((responseError) => {
+        dispatch(new LoadTweetsFailedAction(responseError));
+      });
+  };
+
+  const loadUserInfo = (username) => {
+    dispatch(new LoadUserAction());
+
+    TwitterService.findUserByName(username)
+      .then(({ data }) => data)
+      .then((foundUser) => {
+        dispatch(new LoadUserSuccessfullyAction(foundUser));
+        dispatch(new LoadTweetsAction());
+        loadTweets(foundUser.username);
+      })
+      .catch((responseError) => {
+        dispatch(new LoadUserFailedAction(responseError));
+      });
+  };
 
   return {
     loading,
     error,
     user,
     tweets,
-    loadTweets: () => loadTweets(dispatch, user.username),
-    loadUser: (username) => loadUserInfo(dispatch, username),
+    loadUser: (username) => loadUserInfo(username),
   };
 };
 

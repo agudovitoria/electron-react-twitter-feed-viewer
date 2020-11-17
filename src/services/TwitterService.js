@@ -9,8 +9,8 @@ const TwitterApiInstance = axios.create({
   },
 });
 
-export const getTweetsFromUser = (userName) =>
-  TwitterApiInstance.get('tweets/search/recent', {
+const getTweetsFromUser = (userName) =>
+  TwitterApiInstance.get(twitterApiConfig.recentTweetsUrl, {
     params: {
       query: `from:${userName}`,
       max_results: 100,
@@ -20,8 +20,8 @@ export const getTweetsFromUser = (userName) =>
     .then(({ data }) => data)
     .then(({ data }) => data || []);
 
-export const findUserByName = (username) =>
-  TwitterApiInstance.get(`users/by/username/${username}`, {
+const findUserByName = (username) =>
+  TwitterApiInstance.get(`${twitterApiConfig.tweetsForUsernameUrl}/${username}`, {
     params: {
       'user.fields': [
         'created_at',
@@ -37,3 +37,5 @@ export const findUserByName = (username) =>
       ].join(','),
     },
   }).then(({ data }) => data);
+
+export default { getTweetsFromUser, findUserByName };

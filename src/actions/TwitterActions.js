@@ -1,7 +1,7 @@
-export const LoadTweets = 'loadTweets';
-export const TweetsLoadedSuccessfully = 'tweetsLoadedSuccessfully';
-export const TweetsLoadFailed = 'tweetsLoadFailed';
+export const LoadTweets = 'LoadTweets';
+export const LoadTweetsSuccessfully = 'LoadTweetsSuccessfully';
+export const LoadTweetsFailed = 'LoadTweetsFailed';
 
-export const LoadUser = 'loadUser';
-export const UserLoadedSuccessfully = 'userLoadedSuccessfully';
-export const UserLoadFailed = 'userLoadFailed';
+export const LoadUser = 'LoadUser';
+export const LoadUserSuccessfully = 'LoadUserSuccessfully';
+export const LoadUserFailed = 'LoadUserFailed';

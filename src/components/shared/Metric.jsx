@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
-import { Tooltip, Zoom, Chip, Icon } from '@material-ui/core';
+import { Tooltip, Chip, Icon } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -14,7 +14,7 @@ const Metric = ({ icon, count, help }) => {
   const classes = useStyles();
 
   return (
-    <Tooltip TransitionComponent={Zoom} title={help} className={classes.root}>
+    <Tooltip title={help} className={classes.root}>
       <Chip
         icon={<Icon className={icon} fontSize="small" color="secondary" />}
         label={count}

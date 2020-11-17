@@ -5,6 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import PropTypes from 'prop-types';
 import React from 'react';
 import Moment from 'react-moment';
+import Linkify from 'react-linkify';
 
 import Metrics from './Metrics';
 
@@ -30,15 +31,15 @@ const Tweet = ({
   },
 }) => {
   const classes = useStyles();
-  // eslint-disable-next-line no-console
-  console.log(likes, quotes, replies, retweets);
 
   return (
     <Card className={classes.card.root} variant="outlined">
       <CardContent>
         <Grid container spacing={2} className={classes.card.content}>
           <Grid item xs={12}>
-            <Typography color="textPrimary">{text}</Typography>
+            <Typography color="textPrimary">
+              <Linkify>{text}</Linkify>
+            </Typography>
           </Grid>
           <Grid item xs={12}>
             <Metrics likes={likes} quotes={quotes} replies={replies} retweets={retweets} />

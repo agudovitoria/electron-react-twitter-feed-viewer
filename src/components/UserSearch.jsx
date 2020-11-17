@@ -32,9 +32,13 @@ const UserSearch = () => {
   const classes = useStyles();
   const [searchValue, setSearchValue] = useState('');
   const { loading, loadUser } = TwitterApi();
+  const isEnterKey = (keyCode) => keyCode === 13;
 
-  const onChange = (evt) => {
-    const { value } = evt.target;
+  const inputProps = {
+    'data-testid': 'twitter-user-search-input',
+  };
+
+  const onChange = ({ target: { value } }) => {
     setSearchValue(value);
   };
 
@@ -42,11 +46,24 @@ const UserSearch = () => {
     loadUser(searchValue);
   };
 
+  const onKeyPress = ({ keyCode }) => {
+    if (isEnterKey(keyCode)) {
+      searchUser();
+    }
+  };
+
   return (
     <div className={classes.root}>
       <div className={classes.wrapper}>
-        <Input id="twitter-user-search" onChange={onChange} />
+        <Input
+          inputProps={inputProps}
+          placeholder="Enter username..."
+          onChange={onChange}
+          onKeyDown={onKeyPress}
+          color="secondary"
+        />
         <Button
+          data-testid="twitter-user-search-button"
           variant="contained"
           color="secondary"
           disabled={loading}
@@ -56,7 +73,13 @@ const UserSearch = () => {
         >
           Search
         </Button>
-        {loading && <CircularProgress size={24} className={classes.buttonProgress} />}
+        {loading && (
+          <CircularProgress
+            data-testid="twitter-user-search-cirtular-progress"
+            size={24}
+            className={classes.buttonProgress}
+          />
+        )}
       </div>
     </div>
   );

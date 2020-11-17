@@ -1,7 +1,13 @@
 {
-  "name": "electron-react-twitter-feed-viewer",
+  "name": "twitter-feed-viewer",
+  "productName": "twitter-feed-viewer",
+  "author": "I. Agudo",
   "version": "1.0.0",
+  "description": "Twitter feed viewer made with ❤️ with Electron and React",
   "private": true,
+  "repository": {
+    "url": "https://github.com/agudovitoria/electron-react-twitter-feed-viewer.git"
+  },
   "main": "electron/main.js",
   "homepage": "./",
   "dependencies": {
@@ -9,7 +15,7 @@
     "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "^4.0.0-alpha.56",
     "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
+    "@testing-library/react": "^11.1.2",
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.21.0",
     "electron": "^10.1.5",
@@ -19,6 +25,7 @@
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-linkify": "^1.0.0-alpha",
     "react-moment": "^1.0.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.0",
@@ -30,10 +37,12 @@
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jest": "^24.1.3",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.21.5",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "msw": "^0.21.3",
     "prettier": "^2.1.2",
     "wait-on": "^5.2.0"
   },

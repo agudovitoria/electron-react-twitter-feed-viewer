@@ -32,14 +32,14 @@ const Profile = ({ user }) => {
               <Grid container direction="row" justify="flex-start" alignItems="center">
                 <Grid container direction="column" justify="center" alignItems="flex-start">
                   <Grid container direction="row" justify="flex-start" alignItems="center">
-                    <Grid item xs={1} id="avatar">
+                    <Grid item xs={2} id="avatar">
                       <Avatar
                         className={classes.avatar}
                         alt={user.username}
                         src={user.profile_image_url}
                       />
                     </Grid>
-                    <Grid item xs={3} id="name-username">
+                    <Grid item xs={4} id="name-username">
                       <Grid container direction="row" justify="flex-start" alignItems="center">
                         <Grid item>
                           <Icon className="fas fa-user" color="secondary" fontSize="small" />

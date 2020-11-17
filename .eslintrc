@@ -1,10 +1,12 @@
 {
   "env": {
     "browser": true,
-    "es2021": true
+    "es2021": true,
+    "jest/globals": true
   },
   "extends": [
     "plugin:react/recommended",
+    "plugin:jest/recommended",
     "airbnb",
     "prettier"
   ],
@@ -17,7 +19,8 @@
   },
   "plugins": [
     "react",
-    "prettier"
+    "prettier",
+    "jest"
   ],
   "rules": {
     "prettier/prettier": ["error"]
