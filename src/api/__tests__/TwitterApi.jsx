@@ -11,7 +11,7 @@ import TwitterApi from '../TwitterApi';
 
 jest.mock('../../services/TwitterService');
 
-describe('Should load tweets through TwitterService', () => {
+describe.skip('Should load tweets through TwitterService', () => {
   let onGetTweetsFromUser;
   let onFindUserByName;
 
