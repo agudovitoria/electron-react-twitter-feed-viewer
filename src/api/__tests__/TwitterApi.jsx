@@ -27,9 +27,7 @@ describe.skip('Should load tweets through TwitterService', () => {
   const LoadUserComponent = () => {
     const { loadUser } = TwitterApi();
 
-    act(() => {
-      loadUser();
-    });
+    loadUser();
 
     return <div />;
   };
@@ -61,11 +59,13 @@ describe.skip('Should load tweets through TwitterService', () => {
       data: {},
     });
 
-    render(
-      <TwitterProviderComponent>
-        <LoadUserComponent />
-      </TwitterProviderComponent>
-    );
+    act(() => {
+      render(
+        <TwitterProviderComponent>
+          <LoadUserComponent />
+        </TwitterProviderComponent>
+      );
+    });
 
     expect(onFindUserByName).toHaveBeenCalledTimes(1);
   });

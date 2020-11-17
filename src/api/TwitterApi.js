@@ -30,7 +30,6 @@ const TwitterApi = () => {
       .then(({ data }) => data)
       .then((foundUser) => {
         dispatch(new LoadUserSuccessfullyAction(foundUser));
-        dispatch(new LoadTweetsAction());
         loadTweets(foundUser.username);
       })
       .catch((responseError) => {
