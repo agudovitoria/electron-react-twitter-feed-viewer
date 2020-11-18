@@ -8,9 +8,24 @@
   "repository": {
     "url": "https://github.com/agudovitoria/electron-react-twitter-feed-viewer.git"
   },
-  "main": "electron/main.js",
+  "main": "public/electron.js",
   "homepage": "./",
+  "build": {
+    "appId": "null",
+    "mac": {
+      "category": "social"
+    },
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
+    "directories":{
+      "buildResources": "assets"
+    }
+  },
   "dependencies": {
+    "electron-util": "^0.14.2",
+    "electron-devtools-installer": "^3.1.1",
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "^4.0.0-alpha.56",
@@ -18,9 +33,6 @@
     "@testing-library/react": "^11.1.2",
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.21.0",
-    "electron": "^10.1.5",
-    "electron-devtools-installer": "^3.1.1",
-    "electron-util": "^0.14.2",
     "moment": "^2.29.1",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
@@ -32,7 +44,9 @@
     "web-vitals": "^0.2.4"
   },
   "devDependencies": {
+    "electron": "^10.1.5",
     "concurrently": "^5.3.0",
+    "electron-builder": "^22.9.1",
     "eslint": "^7.13.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^6.15.0",
@@ -49,11 +63,15 @@
   },
   "scripts": {
     "eslint": "eslint .",
+    "postinstall": "electron-builder install-app-deps",
+    "electron-build": "CSC_IDENTITY_AUTO_DISCOVERY=false electron-builder",
+    "release": "yarn react-build && electron-builder --publish=always",
     "start:react": "react-scripts start",
     "start:electron": "electron .",
-    "start": "BROWSER=none concurrently \"yarn start:react\" \"wait-on http://localhost:3000 && yarn start:electron\"",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "NODE_ENV=development ELECTRON_ENV=development BROWSER=none concurrently \"yarn start:react\" \"wait-on http://localhost:3000 && yarn start:electron\"",
+    "react-build": "react-scripts build",
+    "build": "NODE_ENV=production ELECTRON_ENV=production yarn react-build && yarn electron-build",
+    "test": "NODE_ENV=test ELECTRON_ENV=test react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

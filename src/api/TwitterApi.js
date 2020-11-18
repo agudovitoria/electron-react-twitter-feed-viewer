@@ -10,11 +10,12 @@ import TwitterService from '../services/TwitterService';
 const TwitterApi = () => {
   const { loading, error, user, tweets } = useTwitterState();
   const dispatch = useTwitterDispatch();
+  const { getTweetsFromUser, findUserByName } = TwitterService();
 
   const loadTweets = (username) => {
     dispatch(new LoadTweetsAction());
 
-    TwitterService.getTweetsFromUser(username)
+    getTweetsFromUser(username)
       .then((foundTweets) => {
         dispatch(new LoadTweetsSuccessfullyAction(foundTweets));
       })
@@ -23,14 +24,15 @@ const TwitterApi = () => {
       });
   };
 
-  const loadUserInfo = (username) => {
+  const loadUser = (username) => {
     dispatch(new LoadUserAction());
 
-    TwitterService.findUserByName(username)
+    findUserByName(username)
       .then(({ data }) => data)
       .then((foundUser) => {
         dispatch(new LoadUserSuccessfullyAction(foundUser));
         loadTweets(foundUser.username);
+        localStorage.setItem('lastUserName', foundUser.username);
       })
       .catch((responseError) => {
         dispatch(new LoadUserFailedAction(responseError));
@@ -42,7 +44,7 @@ const TwitterApi = () => {
     error,
     user,
     tweets,
-    loadUser: (username) => loadUserInfo(username),
+    loadUser: (username) => loadUser(username),
   };
 };
 

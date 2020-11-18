@@ -1,53 +1,37 @@
 import axios from 'axios';
 import TwitterService from '../TwitterService';
+import axiosMocks from '../../testUtils/axiosMocks';
 
 jest.mock('axios');
 
 describe('Should load tweets from Twitter through axios', () => {
   const username = 'Fake user name';
+  const { findUserByName, getTweetsFromUser } = TwitterService();
+
   test('when load user info', async () => {
-    const response = { data: { username } };
+    axiosMocks.mockAxiosGetResolve({ data: { username } });
 
-    axios.create = jest.fn().mockReturnValue({
-      get: jest.fn().mockImplementationOnce(() => Promise.resolve(response)),
-    });
-    axios.get.mockImplementationOnce(() => Promise.resolve(response));
-
-    const foundUser = await TwitterService.findUserByName(username);
+    const foundUser = await findUserByName(username);
 
     expect(axios.get).toHaveBeenCalledTimes(1);
     expect(foundUser).toEqual({ username });
   });
 
   test('when user has tweets', async () => {
-    const response = { data: { data: [] } };
+    axiosMocks.mockAxiosGetResolve({ data: { data: [] } });
 
-    axios.create = jest.fn().mockReturnValue({
-      get: jest.fn().mockImplementationOnce(() => Promise.resolve(response)),
-    });
-
-    axios.get.mockImplementationOnce(() => Promise.resolve(response));
-
-    const foundTweets = await TwitterService.getTweetsFromUser(username);
+    const foundTweets = await getTweetsFromUser(username);
 
     expect(axios.get).toHaveBeenCalledTimes(1);
-
     expect(foundTweets).toEqual([]);
   });
 
   test('when user has no tweets', async () => {
-    const response = { data: { data: null } };
+    axiosMocks.mockAxiosGetResolve({ data: { data: null } });
 
-    axios.create = jest.fn().mockReturnValue({
-      get: jest.fn().mockImplementationOnce(() => Promise.resolve(response)),
-    });
-
-    axios.get.mockImplementationOnce(() => Promise.resolve(response));
-
-    const foundTweets = await TwitterService.getTweetsFromUser(username);
+    const foundTweets = await getTweetsFromUser(username);
 
     expect(axios.get).toHaveBeenCalledTimes(1);
-
     expect(foundTweets).toEqual([]);
   });
 });

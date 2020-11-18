@@ -6,7 +6,7 @@ import {
   TwitterStateContext,
 } from '../../providers/TwitterContextProvider';
 import UserSearch from '../UserSearch';
-import { getUserSearchInputElement, getUserSearchButtonElement } from '../../testUtils/selectors';
+import { getUserSearchButtonElement, getUserSearchInputElement } from '../../testUtils/selectors';
 
 const initialState = {
   loading: false,
@@ -26,25 +26,26 @@ const renderSearchInputComponent = (state = initialState) => {
     </TwitterStateContext.Provider>
   );
 };
+describe('Should render search components', () => {
+  describe('Should render user search input', () => {
+    test('without initial value', () => {
+      renderSearchInputComponent();
 
-describe('It should render user search input', () => {
-  test('without initial value', () => {
-    renderSearchInputComponent();
+      expect(getUserSearchInputElement()).not.toHaveValue();
+    });
 
-    expect(getUserSearchInputElement()).not.toHaveValue();
+    test('with valid placeholder', () => {
+      renderSearchInputComponent();
+
+      expect(getUserSearchInputElement()).toHaveAttribute('placeholder', 'Enter username...');
+    });
   });
 
-  test('with valid placeholder', () => {
-    renderSearchInputComponent();
+  describe('Should render user search button', () => {
+    test('with valid text', () => {
+      renderSearchInputComponent();
 
-    expect(getUserSearchInputElement()).toHaveAttribute('placeholder', 'Enter username...');
-  });
-});
-
-describe('It should render user search button', () => {
-  test('with valid text', () => {
-    renderSearchInputComponent();
-
-    expect(getUserSearchButtonElement()).toHaveTextContent('Search');
+      expect(getUserSearchButtonElement()).toHaveTextContent('Search');
+    });
   });
 });

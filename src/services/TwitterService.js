@@ -3,10 +3,13 @@ import axios from 'axios';
 import twitterApiConfig from '../config/twitterApiConfig';
 
 const TwitterService = () => {
+  const noCorsProxy = 'https://cors-anywhere.herokuapp.com';
   const TwitterApiInstance = axios.create({
-    baseURL: twitterApiConfig.baseUrl,
+    // baseURL: twitterApiConfig.baseUrl,
+    baseURL: `${noCorsProxy}/${twitterApiConfig.baseUrl}`,
     headers: {
       authorization: `Bearer ${twitterApiConfig.bearerToken}`,
+      origin: 'http://localhost:3000',
     },
   });
 
@@ -45,4 +48,4 @@ const TwitterService = () => {
   };
 };
 
-export default TwitterService();
+export default TwitterService;

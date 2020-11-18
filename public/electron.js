@@ -1,8 +1,7 @@
-const path = require('path');
+// eslint-disable-next-line import/no-extraneous-dependencies
 const { app, BrowserWindow } = require('electron');
 const { is } = require('electron-util');
-
-const { default: installExtension, REACT_DEVELOPER_TOOLS } = require('electron-devtools-installer');
+const path = require('path');
 
 const getBrowserWindowInstances = BrowserWindow.getAllWindows().length;
 const thereIsNoWindowInstances = getBrowserWindowInstances === 0;
@@ -10,7 +9,7 @@ const isNotMac = process.platform !== 'darwin';
 const isDev = is.development;
 
 const appTitle = 'Twitter Feed Viewer';
-const logoImagePath = path.join(__dirname, '../public/logo_512x512.png');
+const logoImagePath = path.join(__dirname, '../public/logo.png');
 
 const onAppReady = () => {
   const win = new BrowserWindow({
@@ -30,11 +29,12 @@ const onAppReady = () => {
   );
 
   if (isDev) {
-    installExtension(REACT_DEVELOPER_TOOLS)
-      // eslint-disable-next-line no-console
-      .then((name) => console.log(`Added Extension:  ${name}`))
-      // eslint-disable-next-line no-console
-      .catch((err) => console.log('An error occurred: ', err));
+    const {
+      default: installExtension,
+      REACT_DEVELOPER_TOOLS,
+      // eslint-disable-next-line global-require
+    } = require('electron-devtools-installer');
+    installExtension(REACT_DEVELOPER_TOOLS);
 
     win.webContents.openDevTools();
   }

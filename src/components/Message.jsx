@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box, Card, CardContent, Icon, Typography } from '@material-ui/core';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   root: {
-    paddingTop: '33%',
+    paddingTop: theme.spacing(24),
     flexGrow: 1,
     display: 'flex',
     flexDirection: 'column',
