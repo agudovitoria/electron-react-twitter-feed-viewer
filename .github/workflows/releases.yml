@@ -1,10 +1,9 @@
-name: Build Mac, Linux & Windows releases
+name: Releases
 
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    branches:
+      - main
 
 jobs:
   release:
@@ -12,21 +11,22 @@ jobs:
 
     strategy:
       matrix:
-        os: [macos-latest, ubuntu-latest]
+        os:
+          - macos-latest
+          - ubuntu-latest
 
     steps:
-      - name: Check out Git repository
-        uses: actions/checkout@v1
+      - name: Retrieve code from GitHub
+        uses: actions/checkout@v2
 
-      - name: Install Node.js, NPM and Yarn
+      - name: Setup node version
         uses: actions/setup-node@v1
         with:
-          node-version: 10
+          node-version: '14'
 
-      - name: Build/release Electron app
+      - name: Build Electron app
         uses: samuelmeuli/action-electron-builder@v1
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-
+          github_token: ${{ secrets.github_token }}
           # If the commit is tagged with a version (e.g. "v1.0.0"),
           release: ${{ startsWith(github.ref, 'refs/tags/v') }}
