@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> Home</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+             
+                <a href="index.html">
+                    <h1 class="navbar-item">Components</h1>
+                </a>
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    API Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Components</h3><ul><li><a href="InvalidUserAccount.html">InvalidUserAccount</a></li><li><a href="Likes.html">Likes</a></li><li><a href="Loading.html">Loading</a></li><li><a href="Message.html">Message</a></li><li><a href="Metrics.html">Metrics</a></li><li><a href="NavBar.html">NavBar</a></li><li><a href="NotRecentTweets.html">NotRecentTweets</a></li><li><a href="NotUser.html">NotUser</a></li><li><a href="Profile.html">Profile</a></li><li><a href="Quotes.html">Quotes</a></li><li><a href="Replies.html">Replies</a></li><li><a href="Retweets.html">Retweets</a></li><li><a href="Tweet.html">Tweet</a></li><li><a href="TweetList.html">TweetList</a></li><li><a href="UserSearch.html">UserSearch</a></li></ul><h3>Global</h3><ul><li><a href="global.html#App">App</a></li><li><a href="global.html#useTwitterDispatch">useTwitterDispatch</a></li><li><a href="global.html#useTwitterState">useTwitterState</a></li></ul></div><div class="category"><h2>Pages</h2><h3>Components</h3><ul><li><a href="Tweets.html">Tweets</a></li></ul></div><div class="category"><h2>api</h2><h3>Global</h3><ul><li><a href="global.html#TwitterApi">TwitterApi</a></li></ul></div><div class="category"><h2>reducers</h2><h3>Global</h3><ul><li><a href="global.html#TwitterReducer">TwitterReducer</a></li></ul></div><div class="category"><h2>services</h2><h3>Global</h3><ul><li><a href="global.html#TwitterService">TwitterService</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p></p>
+                    <h1>Home</h1>
+                </header>
+                
+
+
+
+    
+
+
+    <h3> </h3>
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+    <section>
+        <article><h1>Twitter feed viewer</h1>
+<h3>Development</h3>
+<h4>Required dependencies</h4>
+<ul>
+<li><code>yarn global add parcel-bundler</code> For generate documentation from code</li>
+</ul>
+<h4>Scripts</h4>
+<ul>
+<li>
+<p><code>yarn start</code></p>
+<ul>
+<li>Runs the app in the development mode</li>
+<li>Electron windows is opened automatically</li>
+<li>Opens automatically <em>devtools</em></li>
+<li>Open <a href="http://localhost:3000">http://localhost:3000</a> to view it in the browser</li>
+<li>The page will reload when some changes</li>
+<li>Show lint errors in the console</li>
+</ul>
+</li>
+<li>
+<p><code>yarn test</code></p>
+<ul>
+<li>Launches the test runner in the interactive watch mode</li>
+<li>press <em>w</em> key to see instructions</li>
+</ul>
+</li>
+<li>
+<p><code>yarn test --coverage</code></p>
+<ul>
+<li>Launches the test runner in the interactive watch mode showing code coverage</li>
+<li>press <em>w</em> key to see instructions</li>
+</ul>
+</li>
+<li>
+<p><code>yarn build</code></p>
+<ul>
+<li>Build electron application in standalone mode</li>
+</ul>
+</li>
+</ul>
+<h3>Current release</h3>
+<p>You can find current version releases to download for next platforms:</p>
+<ul>
+<li><a href="dist/twitter-feed-viewer_1.0.0_amd64.snap">Ubuntu Linux (.snap)</a></li>
+<li><a href="dist/twitter-feed-viewer-1.0.0.dmg">Mac OSX (.dmg)</a></li>
+</ul></article>
+    </section>
+
+
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+</body>
+</html>

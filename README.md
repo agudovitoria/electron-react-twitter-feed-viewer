@@ -1,6 +1,8 @@
 # Twitter feed viewer
 
 ### Development
+#### Required dependencies
+* `yarn global add parcel-bundler` For generate documentation from code
 #### Scripts
 
 * `yarn start`

@@ -16,6 +16,7 @@ const TwitterApi = () => {
     dispatch(new LoadTweetsAction());
 
     getTweetsFromUser(username)
+      .then((foundTweets) => (Array.isArray(foundTweets) ? foundTweets : []))
       .then((foundTweets) => {
         dispatch(new LoadTweetsSuccessfullyAction(foundTweets));
       })
@@ -28,7 +29,6 @@ const TwitterApi = () => {
     dispatch(new LoadUserAction());
 
     findUserByName(username)
-      .then(({ data }) => data)
       .then((foundUser) => {
         dispatch(new LoadUserSuccessfullyAction(foundUser));
         loadTweets(foundUser.username);

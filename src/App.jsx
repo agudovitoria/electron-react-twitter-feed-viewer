@@ -15,6 +15,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+/**
+ * App root component
+ */
 const App = () => {
   const classes = useStyles();
 
