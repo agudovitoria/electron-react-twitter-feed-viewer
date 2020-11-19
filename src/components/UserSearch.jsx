@@ -1,6 +1,6 @@
 import { Button, TextField } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
 import TwitterApi from '../api/TwitterApi';
@@ -26,13 +26,23 @@ const useStyles = makeStyles((theme) => ({
  */
 const UserSearch = () => {
   const classes = useStyles();
-  const { loading, loadUser } = TwitterApi();
+  const { loading, user, loadUser, checkSavedUser } = TwitterApi();
   const [searchValue, setSearchValue] = useState('');
   const [error, setError] = useState(false);
   /** Returns if pressed key is 'Enter' */
   const isEnterKey = (keyCode) => keyCode === 13;
   /** Returns if input value is too long for Twitter username field */
   const inputCriteriaIsTooLong = (value) => value.length > 15;
+
+  useEffect(() => {
+    checkSavedUser();
+  }, []);
+
+  useEffect(() => {
+    if (!!user && !!user.username) {
+      setSearchValue(user.username);
+    }
+  }, [user]);
 
   /**
    * Input identifier for test purposes
@@ -90,6 +100,7 @@ const UserSearch = () => {
           onChange={onChange}
           onKeyDown={onKeyPress}
           disabled={loading}
+          value={searchValue}
           label=""
           placeholder="Enter username..."
           helperText={error && 'Invalid username'}

@@ -39,11 +39,19 @@ const TwitterApi = () => {
       });
   };
 
+  const checkSavedUser = () => {
+    const lasLoadedUser = localStorage.getItem('lastUserName');
+    if (lasLoadedUser) {
+      loadUser(lasLoadedUser);
+    }
+  };
+
   return {
     loading,
     error,
     user,
     tweets,
+    checkSavedUser: () => checkSavedUser(),
     loadUser: (username) => loadUser(username),
   };
 };

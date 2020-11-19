@@ -12,8 +12,12 @@ const setupAxios = () => {
   const extractError = (errors) => errors[0];
   const getPromiseRejectedForFirstErrorOf = (errors) => Promise.reject(extractError(errors));
 
-  const onRejected = ({ errors }) => {
-    return getPromiseRejectedForFirstErrorOf(errors);
+  const onRejected = (response) => {
+    if (response.errors) {
+      return extractError(response.errors);
+    }
+
+    return response;
   };
 
   const onFulfilled = ({ data }) => {

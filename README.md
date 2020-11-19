@@ -23,8 +23,3 @@
 
 *  `yarn build`
     * Build electron application in standalone mode
-
-### Current release
-You can find current version releases to download for next platforms:
-* [Ubuntu Linux (.snap)](dist/twitter-feed-viewer_1.0.0_amd64.snap)
-* [Mac OSX (.dmg)](dist/twitter-feed-viewer-1.0.0.dmg)

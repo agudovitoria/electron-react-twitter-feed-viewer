@@ -8,6 +8,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import theme from './theme';
 import setupAxios from './setupAxios';
+import { TwitterProvider } from './providers/TwitterContextProvider';
 
 /** Setup axios default configuration and interceptors */
 setupAxios();
@@ -15,7 +16,9 @@ setupAxios();
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <App />
+      <TwitterProvider>
+        <App />
+      </TwitterProvider>
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
