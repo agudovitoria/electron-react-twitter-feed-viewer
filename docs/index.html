@@ -70,7 +70,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Components</h3><ul><li><a href="InvalidUserAccount.html">InvalidUserAccount</a></li><li><a href="Likes.html">Likes</a></li><li><a href="Loading.html">Loading</a></li><li><a href="Message.html">Message</a></li><li><a href="Metrics.html">Metrics</a></li><li><a href="NavBar.html">NavBar</a></li><li><a href="NotRecentTweets.html">NotRecentTweets</a></li><li><a href="NotUser.html">NotUser</a></li><li><a href="Profile.html">Profile</a></li><li><a href="Quotes.html">Quotes</a></li><li><a href="Replies.html">Replies</a></li><li><a href="Retweets.html">Retweets</a></li><li><a href="Tweet.html">Tweet</a></li><li><a href="TweetList.html">TweetList</a></li><li><a href="UserSearch.html">UserSearch</a></li></ul><h3>Global</h3><ul><li><a href="global.html#App">App</a></li><li><a href="global.html#useTwitterDispatch">useTwitterDispatch</a></li><li><a href="global.html#useTwitterState">useTwitterState</a></li></ul></div><div class="category"><h2>Pages</h2><h3>Components</h3><ul><li><a href="Tweets.html">Tweets</a></li></ul></div><div class="category"><h2>api</h2><h3>Global</h3><ul><li><a href="global.html#TwitterApi">TwitterApi</a></li></ul></div><div class="category"><h2>reducers</h2><h3>Global</h3><ul><li><a href="global.html#TwitterReducer">TwitterReducer</a></li></ul></div><div class="category"><h2>services</h2><h3>Global</h3><ul><li><a href="global.html#TwitterService">TwitterService</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Components</h3><ul><li><a href="Error.html">Error</a></li><li><a href="InvalidUserAccount.html">InvalidUserAccount</a></li><li><a href="Likes.html">Likes</a></li><li><a href="Loading.html">Loading</a></li><li><a href="Message.html">Message</a></li><li><a href="Metrics.html">Metrics</a></li><li><a href="NavBar.html">NavBar</a></li><li><a href="NotRecentTweets.html">NotRecentTweets</a></li><li><a href="NotUser.html">NotUser</a></li><li><a href="Profile.html">Profile</a></li><li><a href="Quotes.html">Quotes</a></li><li><a href="Replies.html">Replies</a></li><li><a href="Retweets.html">Retweets</a></li><li><a href="Tweet.html">Tweet</a></li><li><a href="TweetList.html">TweetList</a></li><li><a href="UserSearch.html">UserSearch</a></li></ul><h3>Global</h3><ul><li><a href="global.html#App">App</a></li><li><a href="global.html#useTwitterDispatch">useTwitterDispatch</a></li><li><a href="global.html#useTwitterState">useTwitterState</a></li></ul></div><div class="category"><h2>Pages</h2><h3>Components</h3><ul><li><a href="Tweets.html">Tweets</a></li></ul></div>
                 
             </nav>
         </div>
@@ -105,6 +105,9 @@
 
     <section>
         <article><h1>Twitter feed viewer</h1>
+<h2>Documentation</h2>
+<p><a href="./docs/index.html">Source JSDOC documentation</a>
+<a href="./README_SOURCES.md">General development documentation</a></p>
 <h3>Development</h3>
 <h4>Required dependencies</h4>
 <ul>
@@ -144,12 +147,17 @@
 </ul>
 </li>
 </ul>
-<h3>Current release</h3>
-<p>You can find current version releases to download for next platforms:</p>
+<h4>Environment variables</h4>
+<p>Application uses <em>.env</em> files for set environment variables:</p>
 <ul>
-<li><a href="dist/twitter-feed-viewer_1.0.0_amd64.snap">Ubuntu Linux (.snap)</a></li>
-<li><a href="dist/twitter-feed-viewer-1.0.0.dmg">Mac OSX (.dmg)</a></li>
-</ul></article>
+<li><em>.env</em></li>
+<li><em>.env.development</em></li>
+<li><em>.env.test</em></li>
+<li><em>.env.production</em></li>
+</ul>
+<blockquote>
+<p>Remember that application is created with <em>CRA</em>, and envs should start with &quot;REACT_APP_&quot;</p>
+</blockquote></article>
     </section>
 
 

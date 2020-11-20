@@ -1,8 +1,13 @@
 # Twitter feed viewer
 
+## Documentation
+[Source JSDOC documentation](./docs/index.html)
+[General development documentation](./README_SOURCES.md)
+
 ### Development
 #### Required dependencies
 * `yarn global add parcel-bundler` For generate documentation from code
+
 #### Scripts
 
 * `yarn start`
@@ -23,3 +28,11 @@
 
 *  `yarn build`
     * Build electron application in standalone mode
+
+#### Environment variables
+Application uses _.env_ files for set environment variables:
+* _.env_
+* _.env.development_
+* _.env.test_
+* _.env.production_
+> Remember that application is created with _CRA_, and envs should start with "REACT_APP_"
