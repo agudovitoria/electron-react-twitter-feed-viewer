@@ -115,7 +115,7 @@ const UserSearch = () => {
           data-testid="twitter-user-search-button"
           variant="contained"
           color="secondary"
-          disabled={loading || error}
+          disabled={loading || error || !searchValue}
           className={classes.button}
           startIcon={<SearchIcon />}
           onClick={onClick}
