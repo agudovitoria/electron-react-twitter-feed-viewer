@@ -1,8 +1,13 @@
 # Twitter feed viewer
 
 ## Documentation
-[Source JSDOC documentation](./docs/index.html)
 [General development documentation](./README_SOURCES.md)
+
+Source JSDOC documentation is in folder `/docs`after execute `yarn docs`
+
+## Release
+
+You can download latest Mac OSX release (v1.0.2) [here](./dist/twitter-feed-viewer-1.0.0.dmg).
 
 ### Development
 #### Required dependencies
