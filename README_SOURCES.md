@@ -18,55 +18,55 @@ Depends on application state, components map can be one of next:
 
 ## Components documentation
 
-####\<Error />
+#### \<Error />
 Component used for show Twitter API errors
 >Twitter API is comsumed through `services/TwitterService.js` and use `axios`. 
 >
 >Note that `axios`interceptors and response parsers are configured in `setupAxios.js`
 
-####\<InvalidUserAccount />
+#### \<InvalidUserAccount />
 Component used for show error when looked for account is not valid. (User doesn't exists)
 
-####\<Likes />
+#### \<Likes />
 Component used for show a tweet likes, with it's icon
 
-####\<Loading />
+#### \<Loading />
 Component used for show spinner when application is loading data from Twitter API
 
-####\<Message />
+#### \<Message />
 Component used for show a message with formatted text
 
-####\<Metrics />
+#### \<Metrics />
 Component used for show a tweet metrics (Likes, Quotes, Replies and Retweets)
 
-####\<NavBar />
+#### \<NavBar />
 Component used for show application top navigation bar including user search text input and button
 
-####\<NotRecentTweets />
+#### \<NotRecentTweets />
 Component used for show error when selected user has not recent tweets published
 
-####\<NotUser />
+#### \<NotUser />
 Component used for show error when is not selected user
 
-####\<Profile />
+#### \<Profile />
 Component used for show selected user profile
 
-####\<Quotes />
+#### \<Quotes />
 Component used for show a tweet quotes, with it's icon
 
-####\<Replies />
+#### \<Replies />
 Component used for show a tweet replies, with it's icon
 
-####\<Retweets />
+#### \<Retweets />
 Component used for show a tweet retweets, with it's icon
 
-####\<Tweet />
+#### \<Tweet />
 Component used for show a user tweet
 
-####\<TweetList />
+#### \<TweetList />
 Component used for show a user tweet list
 
-####\<UserSearch />
+#### \<UserSearch />
 Component used for show user search text input and button
 
 ## Application Context

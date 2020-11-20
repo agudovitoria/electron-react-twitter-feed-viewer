@@ -1,8 +1,13 @@
 # Twitter feed viewer
 
 ## Documentation
-[Source JSDOC documentation](./docs/index.html)
 [General development documentation](./README_SOURCES.md)
+
+Source JSDOC documentation is in folder `/docs`after execute `yarn docs`
+
+## Release
+
+You can make a release running `yarn build` 
 
 ### Development
 #### Required dependencies
