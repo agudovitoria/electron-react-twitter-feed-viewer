@@ -4,4 +4,5 @@ export default () => ({
   user: {},
   tweets: [],
   loadUser: jest.fn(),
+  checkSavedUser: jest.fn(),
 });

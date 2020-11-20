@@ -34,10 +34,16 @@ const UserSearch = () => {
   /** Returns if input value is too long for Twitter username field */
   const inputCriteriaIsTooLong = (value) => value.length > 15;
 
+  /**
+   * Check if exists any saved user in local storage after reloads
+   */
   useEffect(() => {
     checkSavedUser();
   }, []);
 
+  /**
+   * Set username in input value if exists in local storage after reloads
+   */
   useEffect(() => {
     if (!!user && !!user.username) {
       setSearchValue(user.username);
