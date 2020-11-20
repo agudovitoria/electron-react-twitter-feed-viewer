@@ -8,6 +8,8 @@ import {
 import UserSearch from '../UserSearch';
 import { getUserSearchButtonElement, getUserSearchInputElement } from '../../testUtils/selectors';
 
+jest.mock('../../api/TwitterApi');
+
 const initialState = {
   loading: false,
   error: {},
@@ -26,6 +28,7 @@ const renderSearchInputComponent = (state = initialState) => {
     </TwitterStateContext.Provider>
   );
 };
+
 describe('Should render search components', () => {
   describe('Should render user search input', () => {
     test('without initial value', () => {

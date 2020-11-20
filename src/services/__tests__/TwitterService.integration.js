@@ -9,7 +9,7 @@ describe('Should load tweets from Twitter through axios', () => {
   const { findUserByName, getTweetsFromUser } = TwitterService();
 
   test('when load user info', async () => {
-    axiosMocks.mockAxiosGetResolve({ data: { username } });
+    axiosMocks.mockAxiosGetResolve({ username });
 
     const foundUser = await findUserByName(username);
 
@@ -18,16 +18,16 @@ describe('Should load tweets from Twitter through axios', () => {
   });
 
   test('when user has tweets', async () => {
-    axiosMocks.mockAxiosGetResolve({ data: { data: [] } });
+    axiosMocks.mockAxiosGetResolve([{ id: 'f-a-k-e-t-w-e-t-i-d ' }]);
 
     const foundTweets = await getTweetsFromUser(username);
 
     expect(axios.get).toHaveBeenCalledTimes(1);
-    expect(foundTweets).toEqual([]);
+    expect(foundTweets).toEqual([{ id: 'f-a-k-e-t-w-e-t-i-d ' }]);
   });
 
   test('when user has no tweets', async () => {
-    axiosMocks.mockAxiosGetResolve({ data: { data: null } });
+    axiosMocks.mockAxiosGetResolve([]);
 
     const foundTweets = await getTweetsFromUser(username);
 

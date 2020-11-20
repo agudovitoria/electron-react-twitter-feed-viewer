@@ -20,6 +20,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+/**
+ * Show selected user info
+ *
+ * @component
+ * @param {Object} user - User info
+ */
 const Profile = ({ user }) => {
   const classes = useStyles();
 
@@ -107,14 +113,23 @@ const Profile = ({ user }) => {
 };
 
 Profile.propTypes = {
+  /** User info */
   user: PropTypes.shape({
+    /** User created date */
     created_at: PropTypes.string,
+    /** User description */
     description: PropTypes.string,
+    /** User identifier */
     id: PropTypes.string,
+    /** User location */
     location: PropTypes.string,
+    /** User name */
     name: PropTypes.string,
+    /** User profile image url */
     profile_image_url: PropTypes.string,
+    /** User username */
     username: PropTypes.string,
+    /** User verified state */
     verified: PropTypes.bool,
   }).isRequired,
 };

@@ -3,7 +3,7 @@
   "productName": "twitter-feed-viewer",
   "author": "I. Agudo",
   "version": "1.0.0",
-  "description": "Twitter feed viewer made with ❤️ with Electron and React",
+  "description": "Twitter feed viewer made with ❤️ using Electron and React",
   "private": true,
   "repository": {
     "url": "https://github.com/agudovitoria/electron-react-twitter-feed-viewer.git"
@@ -19,13 +19,11 @@
       "build/**/*",
       "node_modules/**/*"
     ],
-    "directories":{
+    "directories": {
       "buildResources": "assets"
     }
   },
   "dependencies": {
-    "electron-util": "^0.14.2",
-    "electron-devtools-installer": "^3.1.1",
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "^4.0.0-alpha.56",
@@ -33,6 +31,10 @@
     "@testing-library/react": "^11.1.2",
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.21.0",
+    "better-docs": "^2.3.2",
+    "electron-devtools-installer": "^3.1.1",
+    "electron-util": "^0.14.2",
+    "jsdoc": "^3.6.6",
     "moment": "^2.29.1",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
@@ -44,8 +46,8 @@
     "web-vitals": "^0.2.4"
   },
   "devDependencies": {
-    "electron": "^10.1.5",
     "concurrently": "^5.3.0",
+    "electron": "^10.1.5",
     "electron-builder": "^22.9.1",
     "eslint": "^7.13.0",
     "eslint-config-airbnb": "^18.2.1",
@@ -63,12 +65,12 @@
   },
   "scripts": {
     "eslint": "eslint .",
+    "docs": "jsdoc -c jsdoc.config.json",
     "postinstall": "electron-builder install-app-deps",
-    "electron-release": "CSC_IDENTITY_AUTO_DISCOVERY=false electron-builder --publish=always -ml",
-    "electron-build": "CSC_IDENTITY_AUTO_DISCOVERY=false electron-builder -ml",
     "start:react": "react-scripts start",
     "start:electron": "electron .",
     "start": "NODE_ENV=development ELECTRON_ENV=development BROWSER=none concurrently \"yarn start:react\" \"wait-on http://localhost:3000 && yarn start:electron\"",
+    "electron-build": "CSC_IDENTITY_AUTO_DISCOVERY=false electron-builder",
     "react-build": "react-scripts build",
     "build": "NODE_ENV=production ELECTRON_ENV=production yarn react-build && yarn electron-build",
     "test": "NODE_ENV=test ELECTRON_ENV=test react-scripts test",

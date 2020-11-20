@@ -2,6 +2,11 @@ import React, { createContext, useContext, useReducer } from 'react';
 import PropTypes from 'prop-types';
 import TwitterReducer from '../reducers/TwitterReducer';
 
+/**
+ * Initial state to sotere in the context
+ *
+ * @type {Object}
+ */
 const initialState = {
   loading: false,
   error: null,
@@ -12,6 +17,14 @@ const initialState = {
 const TwitterStateContext = createContext();
 const TwitterDispatchContext = createContext();
 
+/**
+ * Twitter context provider
+ *
+ * @category providers
+ * @param children - Children components with Twitter provider access to render
+ * @return {JSX.Element} - Children components with access to provider included
+ * @constructor
+ */
 const TwitterProvider = ({ children }) => {
   const [state, dispatch] = useReducer(TwitterReducer, initialState);
 
@@ -22,6 +35,12 @@ const TwitterProvider = ({ children }) => {
   );
 };
 
+/**
+ * Twitter context state access
+ * Throws an error if is not defined properly
+ *
+ * @return {Object}
+ */
 const useTwitterState = () => {
   const context = useContext(TwitterStateContext);
   if (context === undefined) {
@@ -30,6 +49,12 @@ const useTwitterState = () => {
   return context;
 };
 
+/**
+ * Twitter context dispatch access
+ * Throws an error if is not defined properly
+ *
+ * @return {Object}
+ */
 const useTwitterDispatch = () => {
   const context = useContext(TwitterDispatchContext);
   if (context === undefined) {
@@ -39,6 +64,7 @@ const useTwitterDispatch = () => {
 };
 
 TwitterProvider.propTypes = {
+  /** children components */
   children: PropTypes.node.isRequired,
 };
 

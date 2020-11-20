@@ -17,6 +17,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+/**
+ * Show app top navigation bar with user search component included
+ *
+ * @component
+ * @link UserSearch
+ */
 const NavBar = () => {
   const classes = useStyles();
 

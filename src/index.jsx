@@ -1,29 +1,24 @@
 import './index.css';
 
 import { ThemeProvider } from '@material-ui/core/styles';
-import axios from 'axios';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import theme from './theme';
+import setupAxios from './setupAxios';
+import { TwitterProvider } from './providers/TwitterContextProvider';
 
-// Add axios interceptors for manage errors on request and response
-axios.interceptors.request.use(
-  (config) => config,
-  (error) => Promise.reject(error)
-);
-
-axios.interceptors.response.use(
-  (response) => response,
-  (error) => Promise.reject(error)
-);
+/** Setup axios default configuration and interceptors */
+setupAxios();
 
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <App />
+      <TwitterProvider>
+        <App />
+      </TwitterProvider>
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')

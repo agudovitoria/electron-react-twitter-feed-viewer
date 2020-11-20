@@ -20,6 +20,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+/**
+ * Show user tweet
+ *
+ * @component
+ * @param {Object} tweet - User tweet
+ * @param {string} tweet.text - Tweet text
+ *  @param {Date} tweet.created_at - Tweet creation date
+ *  @param {Object} tweet.public_metrics - Tweet public metrics
+ *    @param {number} tweet.public_metrics.likes - Tweet likes
+ *    @param {number} tweet.public_metrics.quotes - Tweet quotes
+ *    @param {number} tweet.public_metrics.replies - Tweet replies
+ *    @param {number} tweet.public_metrics.retweets - Tweet retweets
+ */
 const Tweet = ({
   text,
   createdAt,
@@ -56,12 +69,19 @@ const Tweet = ({
 };
 
 Tweet.propTypes = {
+  /** Tweet created date */
   createdAt: PropTypes.string.isRequired,
+  /** Tweet text */
   text: PropTypes.string.isRequired,
+  /** Tweet metrics */
   metrics: PropTypes.shape({
+    /** Tweet likes */
     like_count: PropTypes.number,
+    /** Tweet quotes */
     quote_count: PropTypes.number,
+    /** Tweet replies */
     reply_count: PropTypes.number,
+    /** Tweet retweets */
     retweet_count: PropTypes.number,
   }).isRequired,
 };

@@ -21,6 +21,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+/**
+ * Show message component
+ *
+ * @component
+ * @param {string} text to show
+ */
 const Message = ({ text }) => {
   const classes = useStyles();
 
@@ -39,6 +45,7 @@ const Message = ({ text }) => {
 };
 
 Message.propTypes = {
+  /** text to show */
   text: PropTypes.string.isRequired,
 };
 

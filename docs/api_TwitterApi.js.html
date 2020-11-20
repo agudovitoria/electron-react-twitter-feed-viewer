@@ -1,0 +1,197 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> api/TwitterApi.js</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+             
+                <a href="index.html">
+                    <h1 class="navbar-item">Components</h1>
+                </a>
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    API Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Components</h3><ul><li><a href="InvalidUserAccount.html">InvalidUserAccount</a></li></ul><h3>Global</h3><ul><li><a href="global.html#App">App</a></li><li><a href="global.html#TwitterApi">TwitterApi</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>api/TwitterApi.js</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import LoadTweetsAction from '../actions/LoadTweetsAction';
+import LoadTweetsSuccessfullyAction from '../actions/LoadTweetsSuccessfullyAction';
+import LoadTweetsFailedAction from '../actions/LoadTweetsFailedAction';
+import LoadUserAction from '../actions/LoadUserAction';
+import LoadUserSuccessfullyAction from '../actions/LoadUserSuccessfullyAction';
+import LoadUserFailedAction from '../actions/LoadUserFailedAction';
+import { useTwitterDispatch, useTwitterState } from '../providers/TwitterContextProvider';
+import TwitterService from '../services/TwitterService';
+
+/**
+ * TwitterApi client for use context for communication with Twitter v2 api
+ *
+ * @function
+ * @return loading loading state from context,
+ * @return error error state from context,
+ * @return user user info from context,
+ * @return tweets user tweets from context,
+ * @return loadUser function to load user process,
+ */
+const TwitterApi = () => {
+  const { loading, error, user, tweets } = useTwitterState();
+  const dispatch = useTwitterDispatch();
+  const { getTweetsFromUser, findUserByName } = TwitterService();
+
+  /**
+   * Load tweets by username
+   * Dispatch actions for loading state, and store user info or error
+   *
+   * @function
+   * @param username username of the tweets owner
+   * @return void
+   */
+  const loadTweets = (username) => {
+    dispatch(new LoadTweetsAction());
+
+    getTweetsFromUser(username)
+      .then((foundTweets) => {
+        dispatch(new LoadTweetsSuccessfullyAction(foundTweets));
+      })
+      .catch((responseError) => {
+        dispatch(new LoadTweetsFailedAction(responseError));
+      });
+  };
+
+  /**
+   * Load user info by username
+   * Dispatch actions for loading state, and store retrieved tweets or error
+   *
+   * @function
+   * @param username
+   * @return void
+   */
+  const loadUser = (username) => {
+    dispatch(new LoadUserAction());
+
+    findUserByName(username)
+      .then(({ data }) => data)
+      .then((foundUser) => {
+        dispatch(new LoadUserSuccessfullyAction(foundUser));
+        loadTweets(foundUser.username);
+        localStorage.setItem('lastUserName', foundUser.username);
+      })
+      .catch((responseError) => {
+        dispatch(new LoadUserFailedAction(responseError));
+      });
+  };
+
+  return {
+    loading,
+    error,
+    user,
+    tweets,
+    loadUser: (username) => loadUser(username),
+  };
+};
+
+export default TwitterApi;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by 
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+</body>
+</html>

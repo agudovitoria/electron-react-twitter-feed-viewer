@@ -17,6 +17,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+/**
+ * Show user tweets
+ *
+ * @component
+ * @param {array} tweets user tweets
+ */
 const TweetList = ({ tweets }) => {
   const classes = useStyles();
 
@@ -36,15 +42,24 @@ const TweetList = ({ tweets }) => {
 };
 
 TweetList.propTypes = {
+  /** user tweets */
   tweets: PropTypes.arrayOf(
     PropTypes.shape({
+      /** tweet identifier */
       id: PropTypes.string.isRequired,
+      /** tweet text */
       text: PropTypes.string.isRequired,
+      /** tweet creation date */
       created_at: PropTypes.string.isRequired,
+      /** tweet metrics */
       public_metrics: PropTypes.shape({
+        /** tweet likes */
         likes: PropTypes.number,
+        /**  tweet quotes */
         quotes: PropTypes.number,
+        /** tweet replies */
         replies: PropTypes.number,
+        /** tweet retweets */
         retweets: PropTypes.number,
       }).isRequired,
     })

@@ -13,6 +13,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+/**
+ * Show loading spinner component
+ *
+ * @component
+ */
 const Loading = () => {
   const classes = useStyles();
 

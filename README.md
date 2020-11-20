@@ -1,6 +1,13 @@
 # Twitter feed viewer
 
+## Documentation
+[Source JSDOC documentation](./docs/index.html)
+[General development documentation](./README_SOURCES.md)
+
 ### Development
+#### Required dependencies
+* `yarn global add parcel-bundler` For generate documentation from code
+
 #### Scripts
 
 * `yarn start`
@@ -22,7 +29,10 @@
 *  `yarn build`
     * Build electron application in standalone mode
 
-### Current release
-You can find current version releases to download for next platforms:
-* [Ubuntu Linux (.snap)](dist/twitter-feed-viewer_1.0.0_amd64.snap)
-* [Mac OSX (.dmg)](dist/twitter-feed-viewer-1.0.0.dmg)
+#### Environment variables
+Application uses _.env_ files for set environment variables:
+* _.env_
+* _.env.development_
+* _.env.test_
+* _.env.production_
+> Remember that application is created with _CRA_, and envs should start with "REACT_APP_"
